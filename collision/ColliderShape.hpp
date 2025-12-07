@@ -45,7 +45,7 @@ public:
     }
 
     virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) override {
-        //Don't even comment.
+        //Because SFML doesn't support diamond inheritance (sf::Transformable)
         if(auto* transformable = dynamic_cast<sf::Transformable*>(&collided))
         {
             transformable->move(-penetration_vector);
@@ -60,3 +60,4 @@ using ConvexColliderShape       =   ColliderShape<sf::ConvexShape>;
 
 
 } //namespace ne
+
