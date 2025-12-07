@@ -20,11 +20,12 @@ public:
 
     virtual sf::Vector2f support(sf::Vector2f directional_vector) const = 0;
 
-    virtual void onCollision(Collider& collided, sf::Vector2f penetration_vector) = 0;
+    virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) = 0;
 };
 
 
 #include <memory>
 inline std::vector<std::unique_ptr<Collider>> Colliders;
+
 
 } //namespace ne
