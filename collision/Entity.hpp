@@ -17,6 +17,7 @@ public:
     virtual void tick() = 0;
 };
 
-inline std::vector<std::unique_ptr<Entity>> Entities{};
+inline std::vector<std::unique_ptr<Entity>> Entities;
 
 } //namespace ne
+
