@@ -25,12 +25,11 @@ public:
     std::optional<sf::Vector2f> intersects(const Collider& other) const;
 
     virtual sf::Vector2f support(sf::Vector2f directional_vector) const = 0;
-
-    virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) = 0;
 };
 
 inline std::vector<std::unique_ptr<Collider>> Colliders;
 
 } //namespace ne
+
 
 
