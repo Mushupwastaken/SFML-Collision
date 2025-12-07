@@ -9,4 +9,3 @@ if(penetration_vector != std::nullopt)
     colliderA.move(-penetration_vector.value());
 }
 ```
-Note: In derived classes, _resolveCollision_ can and should be modified.
