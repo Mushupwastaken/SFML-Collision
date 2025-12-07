@@ -52,5 +52,3 @@ using ConvexColliderShape       =   ColliderShape<sf::ConvexShape>;
 
 
 } //namespace ne
-
-
