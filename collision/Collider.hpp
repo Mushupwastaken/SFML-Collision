@@ -2,10 +2,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <optional>
+#include <memory>
 
-//https://blog.hamaluik.ca/posts/building-a-collision-engine-part-1-2d-gjk-collision-detection/
-
-
+/*
+    SOURCES:
+    https://blog.hamaluik.ca/posts/building-a-collision-engine-part-1-2d-gjk-collision-detection/
+    https://winter.dev/articles/epa-algorithm
+*/
+    
 namespace ne {
 
 class Collider {
@@ -23,9 +27,7 @@ public:
     virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) = 0;
 };
 
-
-#include <memory>
 inline std::vector<std::unique_ptr<Collider>> Colliders;
 
-
 } //namespace ne
+
