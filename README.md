@@ -1,5 +1,5 @@
 # Simple SFML GJK & EPA Collision Support
-### The class, **ColliderShape** adds _intersects_ to sf::Shape
+### **ColliderShape** adds _intersects_ to sf::Shape
 
 The _intersects_ function returns a penetration vector, allowing us to properly resolve collision with the following C++ code:
 ```
