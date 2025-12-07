@@ -38,21 +38,23 @@ bool evolveSimplex(Simplex& vertices, sf::Vector2f& directional_vector) {
             sf::Vector2f abPerp = tripleProduct(ac, ab, ab);
             sf::Vector2f acPerp = tripleProduct(ab, ac, ac);
 
-            if(acPerp.dot(ao) >= 0) {
+            if(acPerp.dot(ao) > 0) {
                 vertices = {c, a};
                 directional_vector = acPerp;
                 
                 return false;
             }
-            else if(abPerp.dot(ao) >= 0)
+            else if(abPerp.dot(ao) > 0)
             {
                 vertices = {b, a};
                 directional_vector = abPerp;
                 
                 return false;
             }
-            
-            return true;
+            else
+            {
+                return true;
+            }
         }
         case Line:
         {
@@ -147,3 +149,4 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
 
 
 } //namespace ne
+
