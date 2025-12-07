@@ -38,7 +38,8 @@ bool evolveSimplex(Simplex& vertices, sf::Vector2f& directional_vector) {
             sf::Vector2f abPerp = tripleProduct(ac, ab, ab);
             sf::Vector2f acPerp = tripleProduct(ab, ac, ac);
 
-            if(acPerp.dot(ao) > 0) {
+            if(acPerp.dot(ao) > 0) 
+            {
                 vertices = {c, a};
                 directional_vector = acPerp;
                 
@@ -149,4 +150,5 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
 
 
 } //namespace ne
+
 
