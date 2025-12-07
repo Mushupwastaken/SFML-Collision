@@ -6,7 +6,7 @@ The _intersects_ function returns a penetration vector, allowing us to properly 
 std::optional penetration_vector = colliderA.intersects(colliderB);
 if(penetration_vector != std::nullopt)
 {
-    colliderB.onCollision(colliderA, penetration_vector.value());
+    colliderA.move(-penetration_vector.value());
 }
 ```
 Note: In derived classes, _resolveCollision_ can and should be modified.
