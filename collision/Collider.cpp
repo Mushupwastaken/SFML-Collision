@@ -41,18 +41,18 @@ bool evolveSimplex(Simplex& vertices, sf::Vector2f& directional_vector) {
             if(acPerp.dot(ao) >= 0) {
                 vertices = {c, a};
                 directional_vector = acPerp;
+                
+                return false;
             }
             else if(abPerp.dot(ao) >= 0)
             {
                 vertices = {b, a};
                 directional_vector = abPerp;
+                
+                return false;
             }
-            else
-            {
-                return true;
-            }
-
-            return false;
+            
+            return true;
         }
         case Line:
         {
@@ -144,5 +144,6 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
     //returns penetration vector
     return closest_dist * closest_normal;
 }
+
 
 } //namespace ne
