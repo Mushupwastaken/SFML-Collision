@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Collider.hpp"
-
+#include <memory>
 
 namespace ne {
 
@@ -16,5 +16,7 @@ public:
     
     virtual void tick() = 0;
 };
+
+inline std::vector<std::unique_ptr<Entity>> Entities{};
 
 } //namespace ne
