@@ -44,7 +44,7 @@ public:
         return T::getTransform().transformPoint(farthest_point);
     }
 
-    virtual void onCollision(Collider& collided, sf::Vector2f penetration_vector) override {
+    virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) override {
         //Don't even comment.
         if(auto* transformable = dynamic_cast<sf::Transformable*>(&collided))
         {
@@ -57,5 +57,6 @@ public:
 using RectangleColliderShape    =   ColliderShape<sf::RectangleShape>;
 using CircleColliderShape       =   ColliderShape<sf::CircleShape>;
 using ConvexColliderShape       =   ColliderShape<sf::ConvexShape>;
+
 
 } //namespace ne
