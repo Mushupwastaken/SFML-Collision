@@ -43,14 +43,6 @@ public:
 
         return T::getTransform().transformPoint(farthest_point);
     }
-
-    virtual void resolveCollision(Collider& collided, sf::Vector2f penetration_vector) override {
-        //Because SFML doesn't support diamond inheritance (sf::Transformable)
-        if(auto* transformable = dynamic_cast<sf::Transformable*>(&collided))
-        {
-            transformable->move(-penetration_vector);
-        }
-    }
 };
 
 //Shorthand for concrete SFML sf::Shape implementations
@@ -60,4 +52,5 @@ using ConvexColliderShape       =   ColliderShape<sf::ConvexShape>;
 
 
 } //namespace ne
+
 
