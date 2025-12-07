@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Collider.hpp"
+
+#include <vector>
 #include <memory>
 
 namespace ne {
@@ -20,4 +22,5 @@ public:
 inline std::vector<std::unique_ptr<Entity>> Entities;
 
 } //namespace ne
+
 
