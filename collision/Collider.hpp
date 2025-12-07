@@ -3,9 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include <optional>
 
-#include <vector>
-#include <memory>
-
 /*
     SOURCES:
     https://blog.hamaluik.ca/posts/building-a-collision-engine-part-1-2d-gjk-collision-detection/
@@ -28,3 +25,4 @@ public:
 };
 
 } //namespace ne
+
