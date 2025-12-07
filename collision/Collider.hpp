@@ -27,9 +27,8 @@ public:
     virtual sf::Vector2f support(sf::Vector2f directional_vector) const = 0;
 };
 
-inline std::vector<std::unique_ptr<Collider>> Colliders;
-
 } //namespace ne
+
 
 
 
