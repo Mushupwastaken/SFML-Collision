@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <optional>
+
+#include <vector>
 #include <memory>
 
 /*
@@ -30,4 +32,5 @@ public:
 inline std::vector<std::unique_ptr<Collider>> Colliders;
 
 } //namespace ne
+
 
