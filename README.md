@@ -6,7 +6,7 @@ ne::CircleColliderShape     colliderA(50.f);
 ne::RectangleColliderShape  colliderB({20.f, 20.f});
 
 std::optional penetration_vector = colliderA.intersects(colliderB);
-if(penetration_vector != std::nullopt)
+if(penetration_vector.has_value())
 {
     colliderA.move(-penetration_vector.value());
 }
