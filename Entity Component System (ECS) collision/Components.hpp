@@ -19,5 +19,3 @@ using ColliderComponent         =   std::variant<Convex, Circle>;
 using TransformableComponent    =   sf::Transformable;
 
 } //namespace ne
-
-
