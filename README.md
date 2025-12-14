@@ -1,5 +1,5 @@
 # Simple SFML GJK & EPA Collision Support
-#### The _intersects_ function returns the penetration vector when successful, allowing us to properly resolve collision.
+#### The _intersects_ / _resolveCollision_ function returns the penetration vector when successful, allowing us to properly resolve collision.
 # Sample C++ Code (class ver.):
 ```cpp
 //Initalizing
@@ -14,7 +14,6 @@ if(penetration_vector.has_value())
 }
 ```
 ***
-#### The _resolveCollision_ function returns the penetration vector when successful, allowing us to properly resolve collision.
 # Sample C++ Code (ECS ver.):
 ```cpp
 //Initalizing
