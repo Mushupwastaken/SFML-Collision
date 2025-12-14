@@ -6,7 +6,6 @@
 #include <stdexcept>
 
 
-
 namespace ne {
 
 using Simplex = std::vector<sf::Vector2f>;
@@ -199,5 +198,6 @@ std::optional<sf::Vector2f> resolveCollision(ColliderComponent collider_a, Trans
     //returns penetration vector
     return closest_distance * closest_normal;
 }
+
 
 } //namespace ne
