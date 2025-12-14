@@ -30,8 +30,8 @@ collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent
 //Collision code
 auto* colliderA         =    entityA.try_get<ne::ColliderComponent>()
 auto* transformableA    =    entityA.try_get<ne::TransformableComponent>()
-auto* colliderB         =    entityA.try_get<ne::ColliderComponent>()
-auto* transformableB    =    entityA.try_get<ne::TransformableComponent>()
+auto* colliderB         =    entityB.try_get<ne::ColliderComponent>()
+auto* transformableB    =    entityB.try_get<ne::TransformableComponent>()
 
 if(!colliderA || !transformableA || !colliderB || !transformableB)
 {
