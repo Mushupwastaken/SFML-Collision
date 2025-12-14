@@ -20,17 +20,17 @@ if(penetration_vector.has_value())
 entt::registry registry;
 
 auto entityA = registry.create();
-collider.emplace<ne::ColliderComponent>(entityA, ne::Circle{50.f});
+collider.emplace<ne::ColliderComponent>		(entityA, ne::Circle{50.f});
 collider.emplace<ne::TransformableComponent>(entityA, ne::TransformableComponent::Identity);
 
 auto entityB = registry.create();
-collider.emplace<ne::ColliderComponent>(entityB, ne::Circle{50.f});
+collider.emplace<ne::ColliderComponent>		(entityB, ne::Circle{50.f});
 collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent::Identity);
 
 //Collision code
-auto* colliderA			=   registry.try_get<ne::ColliderComponent>(entityA);
+auto* colliderA			=   registry.try_get<ne::ColliderComponent>		(entityA);
 auto* transformableA    =   registry.try_get<ne::TransformableComponent>(entityA);
-auto* colliderB         =   registry.try_get<ne::ColliderComponent>(entityB);
+auto* colliderB         =   registry.try_get<ne::ColliderComponent>		(entityB);
 auto* transformableB    =   registry.try_get<ne::TransformableComponent>(entityB);
 
 if(!colliderA || !transformableA || !colliderB || !transformableB)
