@@ -13,7 +13,8 @@ if(penetration_vector.has_value())
     colliderA.move(-penetration_vector.value());
 }
 ```
-
+***
+#### The _resolveCollision_ function returns the penetration vector when successful, allowing us to properly resolve collision.
 # Sample C++ Code (ECS ver.):
 ```cpp
 //Initalizing
