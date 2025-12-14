@@ -20,18 +20,18 @@ if(penetration_vector.has_value())
 entt::registry registry;
 
 auto entityA = registry.create();
-collider.emplace<ColliderComponent>(50.f);
-collider.emplace<TransformableComponent>();
+collider.emplace<ne::ColliderComponent>(entityA, 50.f);
+collider.emplace<ne::TransformableComponent>(entityA, ne::TransformableComponent::Identity);
 
 auto entityB = registry.create();
-collider.emplace<ColliderComponent>(50.f);
-collider.emplace<TransformableComponent>();
+collider.emplace<ne::ColliderComponent>(entityB, 50.f);
+collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent::Identity);
 
 //Collision code
-auto* colliderA         =    colliderA.try_get<ColliderComponent>()
-auto* transformableA    =    colliderA.try_get<TransformableComponent>()
-auto* colliderB         =    colliderA.try_get<ColliderComponent>()
-auto* transformableB    =    colliderA.try_get<TransformableComponent>()
+auto* colliderA         =    entityA.try_get<ne::ColliderComponent>()
+auto* transformableA    =    entityA.try_get<ne::TransformableComponent>()
+auto* colliderB         =    entityA.try_get<ne::ColliderComponent>()
+auto* transformableB    =    entityA.try_get<ne::TransformableComponent>()
 
 if(!colliderA || !transformableA || !colliderB || !transformableB)
 {
@@ -39,7 +39,7 @@ if(!colliderA || !transformableA || !colliderB || !transformableB)
 }
 else
 {
-    std::optional penetration_vector = resolveCollision(colliderA, transformableA, colliderB, transformableB);
+    std::optional penetration_vector = ne::resolveCollision(colliderA, transformableA, colliderB, transformableB);
     if(penetration_vector.has_value())
     {
         transformableA.move(-penetration_vector.value());
