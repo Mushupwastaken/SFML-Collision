@@ -27,7 +27,7 @@ auto entityB = registry.create();
 collider.emplace<ne::ColliderComponent>		(entityB, ne::Circle{50.f});
 collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent::Identity);
 
-//Collision code
+//Collision code (NOTE: using a view is recommeneded)
 auto* colliderA			=   registry.try_get<ne::ColliderComponent>		(entityA);
 auto* transformableA    =   registry.try_get<ne::TransformableComponent>(entityA);
 auto* colliderB         =   registry.try_get<ne::ColliderComponent>		(entityB);
