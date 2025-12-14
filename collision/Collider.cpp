@@ -134,9 +134,9 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
         }
 
         sf::Vector2f support = this->support(closest_normal) - other.support(-closest_normal);
-        float dist_to_origin = closest_normal.dot(support);
+        float dist_from_origin = closest_normal.dot(support);
 
-        if(std::abs(dist_to_origin - closest_dist) <= EPA_epsilon)
+        if(std::abs(dist_from_origin - closest_dist) <= EPA_epsilon)
         {
             break;
         }
@@ -150,6 +150,7 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
 
 
 } //namespace ne
+
 
 
 
