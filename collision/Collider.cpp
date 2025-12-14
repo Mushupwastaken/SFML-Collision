@@ -101,9 +101,9 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
     while(!evolveSimplex(vertices, directional_vector));
 
     //EPA
-    float closest_dist{}, dist{};
-    sf::Vector2f closest_normal{};
-    std::size_t closest_index{};
+    float 			closest_dist{};
+    sf::Vector2f 	closest_normal{};
+    std::size_t 	closest_index{};
 
     //Find closest edge
     for(int iteration = 0; iteration < EPA_iterations; iteration++)
@@ -114,29 +114,29 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
         {
             std::size_t j = (i + 1) % vertices.size();
             
-            sf::Vector2f edge = vertices[j] - vertices[i];
-            sf::Vector2f normal = edge.perpendicular().normalized();
+            sf::Vector2f edge 	= 	vertices[j] - vertices[i];
+            sf::Vector2f normal = 	edge.perpendicular().normalized();
             
-            dist = normal.dot(vertices[i]);
+            float dist = normal.dot(vertices[i]);
 
             if(dist < 0)
             {
-                dist = -dist;
-                normal = -normal;
+                dist 	= 	-dist;
+                normal 	= 	-normal;
             }
 
             if(dist < closest_dist) 
             {
-                closest_dist = dist;
-                closest_normal = normal;
-                closest_index = j;
+                closest_dist 	= 	dist;
+                closest_normal 	= 	normal;
+                closest_index 	= 	j;
             }
         }
 
         sf::Vector2f support = this->support(closest_normal) - other.support(-closest_normal);
-        dist = closest_normal.dot(support);
+        float dist_to_origin = closest_normal.dot(support);
 
-        if(std::abs(dist - closest_dist) <= EPA_epsilon)
+        if(std::abs(dist_to_origin - closest_dist) <= EPA_epsilon)
         {
             break;
         }
@@ -150,5 +150,6 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
 
 
 } //namespace ne
+
 
 
