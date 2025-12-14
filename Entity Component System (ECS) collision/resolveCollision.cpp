@@ -192,7 +192,7 @@ std::optional<sf::Vector2f> resolveCollision(ColliderComponent collider_a, Trans
             break;
         }
 
-        vertices.insert(std::begin(vertices) + closest_index, support);
+        vertices.insert(vertices.begin() + closest_index, support);
     }
 
     //returns penetration vector
@@ -201,3 +201,4 @@ std::optional<sf::Vector2f> resolveCollision(ColliderComponent collider_a, Trans
 
 
 } //namespace ne
+
