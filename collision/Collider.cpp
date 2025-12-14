@@ -141,7 +141,7 @@ std::optional<sf::Vector2f> Collider::intersects(const Collider& other) const {
             break;
         }
 
-        vertices.insert(std::begin(vertices) + closest_index, support);
+        vertices.insert(vertices.begin() + closest_index, support);
     }
 
     //returns penetration vector
