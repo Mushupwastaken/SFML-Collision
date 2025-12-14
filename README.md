@@ -28,10 +28,10 @@ collider.emplace<ne::ColliderComponent>(entityB, 50.f);
 collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent::Identity);
 
 //Collision code
-auto* colliderA         =    entityA.try_get<ne::ColliderComponent>()
-auto* transformableA    =    entityA.try_get<ne::TransformableComponent>()
-auto* colliderB         =    entityB.try_get<ne::ColliderComponent>()
-auto* transformableB    =    entityB.try_get<ne::TransformableComponent>()
+auto* colliderA         =    registry.try_get<ne::ColliderComponent>(entityA)
+auto* transformableA    =    registry.try_get<ne::TransformableComponent>(entityA)
+auto* colliderB         =    registry.try_get<ne::ColliderComponent>(entityB)
+auto* transformableB    =    registry.try_get<ne::TransformableComponent>(entityB)
 
 if(!colliderA || !transformableA || !colliderB || !transformableB)
 {
