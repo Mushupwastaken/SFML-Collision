@@ -1,6 +1,6 @@
 # Simple SFML GJK & EPA Collision Support
 #### The _intersects_ / _resolveCollision_ function returns the penetration vector when successful, allowing us to properly resolve collision.
-# Sample C++ Code (class ver.):
+># Sample C++ Code (class ver.):
 ```cpp
 //Initalizing
 ne::CircleColliderShape     colliderA(50.f);
@@ -14,7 +14,7 @@ if(penetration_vector.has_value())
 }
 ```
 ***
-# Sample C++ Code (ECS ver.):
+># Sample C++ Code (ECS ver.):
 ```cpp
 //Initalizing
 entt::registry registry;
