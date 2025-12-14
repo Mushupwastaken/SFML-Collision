@@ -11,6 +11,3 @@ namespace ne {
 std::optional<sf::Vector2f> resolveCollision(ColliderComponent collider_a, TransformableComponent transformable_a, ColliderComponent collider_b, TransformableComponent transformable_b);
 
 } //namespace ne
-
-
-
