@@ -1,6 +1,6 @@
 namespace ne {
 
-
+//Note: untested :)
 constexpr sf::Vector2f Collider::getSupport(sf::Vector2f directionalVector) const {
     auto calculateSupport = [&](const auto& shape) -> sf::Vector2f {
         using T = std::decay_t<decltype(shape)>;
@@ -101,3 +101,4 @@ constexpr sf::FloatRect Collider::getBounds() const {
 
 
 } //namespace ne
+
