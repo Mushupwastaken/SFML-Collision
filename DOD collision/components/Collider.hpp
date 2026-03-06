@@ -23,13 +23,14 @@ struct Circle {
 } //inline namespace shapes
 
 struct Collider {
-    std::variant<Convex, Rectangle, Circle> shape{}; //Defines getSupportPoint in CollisionMath.cpp and CreateSfmlShape in ColliderDrawing.cpp
+    std::variant<Convex, Rectangle, Circle> shape{};
 
     [[nodiscard]] constexpr sf::Vector2f getSupport(sf::Vector2f directionalVector) const;
     [[nodiscard]] constexpr sf::FloatRect getBounds() const;
 };
 
 } //namespace ne
+
 
 
 #include "Collider.inl"
