@@ -14,24 +14,24 @@ if(penetration_vector.has_value())
 }
 ```
 ***
-# Sample C++ Code (ECS ver.):
+# Sample C++ Code (DOD ver.):
 ```cpp
 //Initalizing
 entt::registry registry;
 
 auto entityA = registry.create();
-collider.emplace<ne::ColliderComponent>		(entityA, ne::Circle{50.f});
-collider.emplace<ne::TransformableComponent>(entityA, ne::TransformableComponent::Identity);
+collider.emplace<ne::Collider>(entityA, ne::Circle{50.f});
+collider.emplace<sf::Transformable>(entityA, ne::TransformableComponent::Identity);
 
 auto entityB = registry.create();
-collider.emplace<ne::ColliderComponent>		(entityB, ne::Circle{50.f});
-collider.emplace<ne::TransformableComponent>(entityB, ne::TransformableComponent::Identity);
+collider.emplace<ne::Collider>(entityB, ne::Circle{50.f});
+collider.emplace<sf::Transformable>(entityB, ne::TransformableComponent::Identity);
 
 //Collision code (NOTE: using a view is recommeneded)
-auto* colliderA			=   registry.try_get<ne::ColliderComponent>		(entityA);
-auto* transformableA    =   registry.try_get<ne::TransformableComponent>(entityA);
-auto* colliderB         =   registry.try_get<ne::ColliderComponent>		(entityB);
-auto* transformableB    =   registry.try_get<ne::TransformableComponent>(entityB);
+auto* colliderA			=   registry.try_get<ne::Collider>(entityA);
+auto* transformableA    =   registry.try_get<sf::Transformable>(entityA);
+auto* colliderB         =   registry.try_get<ne::Collider>(entityB);
+auto* transformableB    =   registry.try_get<sf::Transformable>(entityB);
 
 if(!colliderA || !transformableA || !colliderB || !transformableB)
 {
@@ -39,10 +39,9 @@ if(!colliderA || !transformableA || !colliderB || !transformableB)
 }
 else
 {
-    std::optional penetration_vector = ne::resolveCollision(*colliderA, *transformableA, *colliderB, *transformableB);
-    if(penetration_vector.has_value())
+    if(const std::optional manifold = ne::findPenetration(*colliderA, *transformableA, *colliderB, *transformableB);)
     {
-        transformableA->move(-penetration_vector.value());
+        transformableA->move(manifold->normal * -manifold->depth);
     }
 }
 ```
