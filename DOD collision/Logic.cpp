@@ -89,7 +89,7 @@ bool evolveSimplex(Simplex& vertices, sf::Vector2f& directionalVector) {
 }
 
 std::optional<Simplex> GJK(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB) {
-    detail::Simplex vertices{};
+    Simplex vertices{};
     sf::Vector2f directionalVector{1.0f, 0.0f};
 
     do
@@ -194,3 +194,4 @@ std::optional<Manifold> findPenetration(const Collider& colliderA, const sf::Tra
 
 
 } //namespace ne
+
