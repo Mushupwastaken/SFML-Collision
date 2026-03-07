@@ -12,7 +12,7 @@ namespace detail {
 
 using Simplex = std::vector<sf::Vector2f>;
 
-sf::Vector2f getMinkowskiDifference(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB, sf::Vector2f directionalVector) {
+[[nodiscard]] sf::Vector2f getMinkowskiDifference(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB, sf::Vector2f directionalVector) {
     const sf::Vector2f localDirectionalVectorA = directionalVector.rotatedBy(-transformableA.getRotation());
     const sf::Vector2f localDirectionalVectorB = (-directionalVector).rotatedBy(-transformableB.getRotation());
     
@@ -22,7 +22,7 @@ sf::Vector2f getMinkowskiDifference(const Collider& colliderA, const sf::Transfo
     return globalSupportA - globalSupportB;
 }
 
-bool evolveSimplex(Simplex& vertices, sf::Vector2f& directionalVector) {
+[[nodiscard]] bool evolveSimplex(Simplex& vertices, sf::Vector2f& directionalVector) {
     constexpr auto tripleProduct = [](sf::Vector2f a, sf::Vector2f b, sf::Vector2f c) -> sf::Vector2f {
         return (b * a.dot(c)) - (a * b.dot(c));
     };
@@ -88,7 +88,7 @@ bool evolveSimplex(Simplex& vertices, sf::Vector2f& directionalVector) {
     }
 }
 
-std::optional<Simplex> GJK(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB) {
+[[nodiscard]] std::optional<Simplex> GJK(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB) {
     Simplex vertices{};
     sf::Vector2f directionalVector{1.0f, 0.0f};
 
@@ -109,7 +109,7 @@ std::optional<Simplex> GJK(const Collider& colliderA, const sf::Transformable& t
     return vertices;
 }
 
-Manifold EPA(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB, Simplex polytope) {    
+[[nodiscard]] Manifold EPA(const Collider& colliderA, const sf::Transformable& transformableA, const Collider& colliderB, const sf::Transformable& transformableB, Simplex polytope) {    
     float closestDistance{};
     sf::Vector2f closestNormal{};
     std::size_t closestIndex{};
@@ -194,4 +194,5 @@ std::optional<Manifold> findPenetration(const Collider& colliderA, const sf::Tra
 
 
 } //namespace ne
+
 
