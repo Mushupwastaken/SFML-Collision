@@ -20,12 +20,12 @@ if(penetration_vector.has_value())
 entt::registry registry;
 
 auto entityA = registry.create();
-collider.emplace<ne::Collider>(entityA, ne::Circle{50.f});
-collider.emplace<sf::Transformable>(entityA, ne::TransformableComponent::Identity);
+collider.emplace<ne::Collider>(entityA, ne::shapes::Circle{50.0f});
+collider.emplace<sf::Transformable>(entityA, sf::Transformable::Identity);
 
 auto entityB = registry.create();
-collider.emplace<ne::Collider>(entityB, ne::Circle{50.f});
-collider.emplace<sf::Transformable>(entityB, ne::TransformableComponent::Identity);
+collider.emplace<ne::Collider>(entityB, ne::shapes::Circle{50.0f});
+collider.emplace<sf::Transformable>(entityB, sf::Transformable::Identity);
 
 //Collision code (NOTE: using a view is recommeneded)
 auto* colliderA			=   registry.try_get<ne::Collider>(entityA);
