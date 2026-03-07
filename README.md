@@ -1,5 +1,5 @@
 # Simple SFML GJK & EPA Collision Support
-_Editors note:_ I'd recommended you use the DOD ver.  OOP is 4 months out of date + Isn't properly built for scale
+_Note:_  I'd recommended you use the DOD ver.  OOP is 4 months out of date + Isn't properly built for scale
 
 # Sample C++ Code (class ver.):
 ```cpp
