@@ -41,7 +41,7 @@ if(!colliderA || !transformableA || !colliderB || !transformableB)
 }
 else
 {
-    if(const std::optional manifold = ne::findPenetration(*colliderA, *transformableA, *colliderB, *transformableB);)
+    if(const std::optional manifold = ne::findPenetration(*colliderA, *transformableA, *colliderB, *transformableB))
     {
         transformableA->move(manifold->normal * -manifold->depth);
     }
