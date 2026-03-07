@@ -8,8 +8,6 @@
 
 namespace ne {
 
-//QOL additions
-
 namespace detail {
 
 using Simplex = std::vector<sf::Vector2f>;
@@ -193,5 +191,6 @@ std::optional<Manifold> findPenetration(const Collider& colliderA, const sf::Tra
 
     return std::nullopt;
 }
+
 
 } //namespace ne
