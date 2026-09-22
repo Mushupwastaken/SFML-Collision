@@ -3,9 +3,9 @@
 
 namespace ne {
 
-namespace detail {
+namespace priv {
 
-[[nodiscard]] constexpr sf::Vector2f tripleProduct(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c)
+[[nodiscard]] constexpr sf::Vector2f tripleProduct(sf::Vector2f a, sf::Vector2f b, sf::Vector2f c) 
 {
     return b * a.dot(c) - a * b.dot(c);
 }
@@ -93,7 +93,7 @@ namespace detail {
     return supportA - supportB;
 }
 
-} //namespace detail
+} //namespace priv
 
 sf::FloatRect Collider::getBounds() const 
 {
@@ -261,7 +261,7 @@ bool CollisionHandler::intersects(const Collider& colliderA, const sf::Transform
 
     for(unsigned int i = 0; i < m_details.gjkIterations; i++)
     {
-        sf::Vector2f support = detail::getMinkowskiDifference(colliderA, transformA, colliderB, transformB, dirVec);
+        sf::Vector2f support = priv::getMinkowskiDifference(colliderA, transformA, colliderB, transformB, dirVec);
 
         if(support.dot(dirVec) < 0.0f)
         {
@@ -270,7 +270,7 @@ bool CollisionHandler::intersects(const Collider& colliderA, const sf::Transform
 
         m_vertices.push_back(support);
 
-        if(detail::evolveSimplex(m_vertices, dirVec))
+        if(priv::evolveSimplex(m_vertices, dirVec))
         {
             return true;
         }
@@ -330,7 +330,7 @@ std::optional<sf::Vector2f> CollisionHandler::findIntersection(const Collider& c
             }
         }
             
-        sf::Vector2f support = detail::getMinkowskiDifference(colliderA, transformA, colliderB, transformB, closestNormal);
+        sf::Vector2f support = priv::getMinkowskiDifference(colliderA, transformA, colliderB, transformB, closestNormal);
         float dist = closestNormal.dot(support);
 
         if(std::abs(dist - closestDist) <= m_details.epaTolerance)
