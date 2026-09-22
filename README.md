@@ -1,18 +1,19 @@
 # Simple SFML GJK & EPA Collision Support
 __No credit required!__\
-_Note:_  I'd recommended you use the DOD ver.  OOP is 4 months out of date + Isn't properly built for scale
+_Note:_  I'd recommended you use the OOP ver.  DOD ver. is ~6 months out of date.
 
 # Sample C++ Code (class ver.):
 ```cpp
-//Initalizing
-ne::CircleColliderShape     colliderA(50.f);
-ne::RectangleColliderShape  colliderB({20.f, 20.f});
+ne::CollisionHandler handler{};
 
-//Collision code
-std::optional penetration_vector = colliderA.intersects(colliderB);
-if(penetration_vector.has_value())
+ne::CircleCollider colliderA(50.0f);
+sf::Transformable transformableA{};
+ne::CircleCollider colliderB(50.0f);
+sf::Transformable transformableB{};
+
+if(const std::optional resolutionVec = handler.findIntersection(colliderA, transformableA.getTransform(), colliderB, transformableB.getTransform()))
 {
-    colliderA.move(-penetration_vector.value());
+    transformableA.move(-*resolutionVec);
 }
 ```
 ***
