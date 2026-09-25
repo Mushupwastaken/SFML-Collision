@@ -203,23 +203,11 @@ void ConvexCollider::updateBounds()
 
     for(const sf::Vector2f& point : m_points) 
     {
-        if(point.x < minPoint.x)
-        {
-            minPoint.x = point.x;
-        }
-        if(point.x > maxPoint.x) 
-        {
-            maxPoint.x = point.x;
-        }
-
-        if(point.y < minPoint.y)
-        {
-            minPoint.y = point.y;
-        }
-        if(point.y > maxPoint.y) 
-        {
-            maxPoint.y = point.y;
-        }
+        minPoint.x = std::min(minPoint.x, point.x);
+        maxPoint.x = std::max(maxPoint.x, point.x);
+        
+        minPoint.y = std::min(minPoint.y, point.y);
+        maxPoint.y = std::max(maxPoint.y, point.y);
     }
     
     m_bounds.position = minPoint;
