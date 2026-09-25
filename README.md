@@ -2,7 +2,7 @@
 __No credit required!__\
 _Note:_  I'd recommended you use the OOP ver.  DOD ver. is ~6 months out of date.
 
-# Sample C++ Code (class ver.):
+# Sample C++ Code (OOP ver.):
 ```cpp
 ne::CollisionHandler handler{};
 
@@ -19,32 +19,15 @@ if(const std::optional resolutionVec = handler.findIntersection(colliderA, trans
 ***
 # Sample C++ Code (DOD ver.):
 ```cpp
-//Initalizing
-entt::registry registry;
+ne::CollisionHandler handler{};
 
-auto entityA = registry.create();
-collider.emplace<ne::Collider>(entityA, ne::shapes::Circle{50.0f});
-collider.emplace<sf::Transformable>(entityA, sf::Transformable::Identity);
+ne::Collider colliderA{ne::CollisionBody::Circle{50.0f}};
+sf::Transformable transformableA{};
+ne::CircleCollider colliderB{ne::CollisionBody::Circle{50.0f};
+sf::Transformable transformableB{};
 
-auto entityB = registry.create();
-collider.emplace<ne::Collider>(entityB, ne::shapes::Circle{50.0f});
-collider.emplace<sf::Transformable>(entityB, sf::Transformable::Identity);
-
-//Collision code (NOTE: using a view is recommeneded)
-auto* colliderA			=   registry.try_get<ne::Collider>(entityA);
-auto* transformableA    =   registry.try_get<sf::Transformable>(entityA);
-auto* colliderB         =   registry.try_get<ne::Collider>(entityB);
-auto* transformableB    =   registry.try_get<sf::Transformable>(entityB);
-
-if(!colliderA || !transformableA || !colliderB || !transformableB)
+if(const std::optional resolutionVec = handler.findIntersection(colliderA, transformableA.getTransform(), colliderB, transformableB.getTransform()))
 {
-    std::cerr << "Failed to gather necessary Components!\n";
-}
-else
-{
-    if(const std::optional manifold = ne::findPenetration(*colliderA, *transformableA, *colliderB, *transformableB))
-    {
-        transformableA->move(manifold->normal * -manifold->depth);
-    }
+    transformableA.move(-*resolutionVec);
 }
 ```
