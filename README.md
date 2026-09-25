@@ -1,5 +1,5 @@
 # Simple SFML GJK & EPA Collision Support
-__No credit required!__\
+__No credit required!__
 
 # Sample C++ Code (OOP ver.):
 ```cpp
