@@ -23,7 +23,7 @@ ne::CollisionHandler handler{};
 
 ne::Collider colliderA{ne::CollisionBody::Circle{50.0f}};
 sf::Transformable transformableA{};
-ne::CircleCollider colliderB{ne::CollisionBody::Circle{50.0f};
+ne::Collider colliderB{ne::CollisionBody::Circle{50.0f};
 sf::Transformable transformableB{};
 
 if(const std::optional resolutionVec = handler.findIntersection(colliderA, transformableA.getTransform(), colliderB, transformableB.getTransform()))
