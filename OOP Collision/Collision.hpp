@@ -12,12 +12,6 @@
 
 namespace ne {
 
-struct CollisionDetails {
-    unsigned int gjkIterations{32};
-    unsigned int epaIterations{64};
-    float epaTolerance{1e-3};
-};
-
 class Collider {
 public:
     virtual ~Collider() = default;
@@ -67,6 +61,12 @@ private:
 
     std::vector<sf::Vector2f> m_points{};
     sf::FloatRect m_bounds{};
+};
+
+struct CollisionDetails {
+    unsigned int gjkIterations{32};
+    unsigned int epaIterations{64};
+    float epaTolerance{1e-3};
 };
 
 class CollisionHandler {
